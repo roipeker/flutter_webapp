@@ -19,11 +19,20 @@ jobs:
     - run: flutter pub get
     - run: flutter config --enable-web
     - run: flutter build web
-    - name: Archive Production Artifact
-      uses: actions/upload-artifact@master
-      with:
-        name: web-build
-        path: build/web
+    # - name: Archive Production Artifact
+    #   uses: actions/upload-artifact@master
+    #   with:
+    #     name: web-build
+    #     path: build/web
+    
+    # Deploy to local repo
+    - name: Deploy
+      uses: s0/git-publish-subdir-action@develop
+      env:
+        REPO: self
+        BRANCH: web
+        FOLDER: build/web
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # deploy_web:
   #   name: Deploy Web to Firebase Hosting
   #   needs: build_web
