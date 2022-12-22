@@ -3,10 +3,10 @@ name: Flutter Workflow
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 jobs:
   build_web:
     name: Build Flutter (Web)
